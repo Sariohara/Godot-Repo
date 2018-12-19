@@ -1,12 +1,27 @@
 extends Node2D
 
 var playerWords = []
-var prompt = ["Noun", "Adjective", "Verb", "Noun"]
-var story = "Once upon a time in %s. There was a girl who was having %s at the Arcade. She was having a %s and went %s"
+var currentStory
+var strings
 
 func _ready():
+	set_random_stories()
 	Introduction()
+	promptplayer()
 	$BlackBoard/TextBox.clear()
+	
+func set_random_stories():
+	var stories = get_from_json("stories.json")
+	randomize()
+	currentStory = stories[randi() % stories.size()]
+	
+func get_from_json(filename):
+	var file = File.new()
+	file.open(filename, File.READ)
+	var text = file.get_as_text()
+	var data = parse_json(text)
+	file.close()
+	return data
 
 func _on_TextureButton_pressed():
 	if is_story_done():
@@ -21,10 +36,11 @@ func _on_TextBox_text_entered(new_text):
 	check_player_word_length()
 	
 func is_story_done():
-	return playerWords.size() == prompt.size()
+	return playerWords.size() == currentStory["prompt"].size()
 	
 func promptplayer():
-	$BlackBoard/StoryText.text = ("Can I have a " + prompt[playerWords.size()] + ", please.")
+	var nextPrompt = currentStory["prompt"][playerWords.size()]
+	$BlackBoard/StoryText.text == (strings["prompt"] % nextPrompt)
 	
 func check_player_word_length():
 	if is_story_done():
@@ -33,12 +49,13 @@ func check_player_word_length():
 		promptplayer()
 		
 func tell_story():
-	$BlackBoard/StoryText.text = story % playerWords
-	$BlackBoard/TextureButton/ButtonLabel.text = "Play again"
+	$BlackBoard/StoryText.text = currentStory["story"] % playerWords
+	$BlackBoard/TextureButton/ButtonLabel.text = strings["again"]
 	end_game()
 	
 func Introduction():
-	$BlackBoard/StoryText.text = ("Welcome to Loony Lips. \n\n In this game it is your job to fill in the words of a sentence.\n\n Can I have "+ prompt[playerWords.size()] + ", please.") 
+	strings = get_from_json("other_strings.json")
+	$BlackBoard/StoryText.text = strings["intro_text"] 
 	
 func end_game():
 	$BlackBoard/TextBox.queue_free()

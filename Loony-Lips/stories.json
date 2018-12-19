@@ -1,0 +1,30 @@
+{
+   "prompt":[
+      "Noun",
+      "Adjective",
+      "Verb",
+      "Noun"
+   ],
+   "story":"Once upon a time in %s. There was a girl who was having %s at the Arcade. She was having a %s and went %s.",
+   "prompt":[
+      "Noun",
+      "Adjective",
+      "Verb",
+      "Noun"
+   ],
+   "story":"In the city of %s. There was a man who was feeling %s and decided to %s at %s.",
+   "prompt":[
+      "Noun",
+      "Adjective",
+      "Verb",
+      "Noun"
+   ],
+   "story":"The %s was feeling %s and %s to his %s.",
+   "prompt":[
+      "Noun",
+      "Adjective",
+      "Verb",
+      "Noun"
+   ],
+   "story":"A %s was walkin, while feeling %s. It decided to %s to a faraway %s."
+}
