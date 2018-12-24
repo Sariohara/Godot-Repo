@@ -1,30 +1,38 @@
 {
-   "prompt":[
-      "Noun",
-      "Adjective",
-      "Verb",
-      "Noun"
-   ],
-   "story":"Once upon a time in %s. There was a girl who was having %s at the Arcade. She was having a %s and went %s.",
-   "prompt":[
-      "Noun",
-      "Adjective",
-      "Verb",
-      "Noun"
-   ],
-   "story":"In the city of %s. There was a man who was feeling %s and decided to %s at %s.",
-   "prompt":[
-      "Noun",
-      "Adjective",
-      "Verb",
-      "Noun"
-   ],
-   "story":"The %s was feeling %s and %s to his %s.",
-   "prompt":[
-      "Noun",
-      "Adjective",
-      "Verb",
-      "Noun"
-   ],
-   "story":"A %s was walkin, while feeling %s. It decided to %s to a faraway %s."
+    "prompt": [
+        {
+            "Noun1": "A thing",
+            "Adjective1": "A feeling",
+            "Verb1": "A action",
+            "Noun2": "Another thing",
+            "story1": "Once upon a time in %s. There was a girl who was having %s at the Arcade. She was having a %s and went %s."
+        },
+
+
+        {
+            "Noun3": "A thing",
+            "Adjective2": "A feeling",
+            "Verb2": "A action",
+            "Noun4": "Another thing",
+            "story2": "In the city of %s. There was a man who was feeling %s and decided to %s at %s."
+        },
+
+
+        {
+          "Noun5": "A thing",
+          "Adjective3": "A feeling",
+          "Verb3": "A action",
+          "Noun6": "Another thing",
+          "story3":"The %s was feeling %s and %s to his %s."
+        },
+
+        {
+          "Noun8": "A thing",
+          "Adjective4": "A feeling",
+          "Verb4": "A action",
+          "Noun9": "Another thing",
+          "story4":"A %s was walking, while feeling %s. It decided to %s to a faraway %s."
+        }]
+
+
 }
