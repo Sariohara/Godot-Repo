@@ -8,7 +8,7 @@ func _ready():
 	set_random_stories()
 	Introduction()
 	promptplayer()
-	$BlackBoard/TextBox.clear()
+	$BlackBoard/TextBox.text = ""
 	
 func set_random_stories():
 	var stories = get_from_json("stories.json")
@@ -16,6 +16,7 @@ func set_random_stories():
 	currentStory = stories[randi() % stories.size()]
 	
 func get_from_json(filename):
+	var i = 0
 	var file = File.new()
 	file.open(filename, File.READ)
 	var text = file.get_as_text()
@@ -32,7 +33,8 @@ func _on_TextureButton_pressed():
 
 func _on_TextBox_text_entered(new_text):
 	playerWords.append(new_text)
-	$BlackBoard/TextBox.clear()
+	$BlackBoard/TextBox.text = ""
+	$BlackBoard/StoryText.text = ""
 	check_player_word_length()
 	
 func is_story_done():
@@ -40,7 +42,7 @@ func is_story_done():
 	
 func promptplayer():
 	var nextPrompt = currentStory["prompt"][playerWords.size()]
-	$BlackBoard/StoryText.text == (strings["prompt"] % nextPrompt)
+	$BlackBoard/StoryText.text += (strings["prompt"] % nextPrompt)
 	
 func check_player_word_length():
 	if is_story_done():

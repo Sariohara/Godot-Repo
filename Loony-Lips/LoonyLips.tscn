@@ -64,7 +64,6 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-_sections_unfolded = [ "BBCode", "custom_fonts" ]
 
 [node name="TextBox" type="LineEdit" parent="BlackBoard" index="1"]
 
@@ -142,7 +141,6 @@ scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-_sections_unfolded = [ "custom_fonts" ]
 
 [connection signal="text_entered" from="BlackBoard/TextBox" to="." method="_on_TextBox_text_entered"]
 
