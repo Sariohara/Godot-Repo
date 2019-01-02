@@ -16,11 +16,11 @@ Coin1-back.png created in Aseperite
 
 copyright:
 
-copyright 2019 © Michael Eaton 
+copyright 2019 Â© Michael Eaton 
 all rights reserved
 
 Sources:
 Aseperite: 
 
-https://store.steampowered.com/app/431730/Aseprite/
+https://store.steampowered.com/app/431730/Aseprite/ \n
 https://www.aseprite.org/
