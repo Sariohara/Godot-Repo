@@ -22,5 +22,6 @@ all rights reserved
 Sources:
 Aseperite: 
 
-https://store.steampowered.com/app/431730/Aseprite/ \n
+https://store.steampowered.com/app/431730/Aseprite/ 
+
 https://www.aseprite.org/
