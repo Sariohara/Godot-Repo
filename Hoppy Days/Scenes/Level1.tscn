@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hoppy-Days-Assets/GFX/Environment/ground_grass.png" type="Texture" id=2]
+
+[node name="Level1" type="Node2D" index="0"]
+
+[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 183.715, 321.494 )
+
+[node name="Platform" type="StaticBody2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 197.368, 536.48 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platform" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform" index="1"]
+
+visible = false
+build_mode = 0
+polygon = PoolVector2Array( -189.136, -35.9033, -186.056, -43.3854, -175.933, -46.9064, -145.564, -47.7867, 179.25, -47.7867, 188.052, -38.9842, 191.573, -25.3402, 189.372, -12.1364, 159.444, 36.2775, -160.968, 47.2807, -190.017, -18.7383, -190.457, -28.4211 )
+
+[node name="Platform2" type="StaticBody2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 1436.95, 378.637 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platform2" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform2" index="1"]
+
+visible = false
+build_mode = 0
+polygon = PoolVector2Array( -189.136, -35.9033, -186.056, -43.3854, -175.933, -46.9064, -145.564, -47.7867, 179.25, -47.7867, 188.052, -38.9842, 191.573, -25.3402, 189.372, -12.1364, 159.444, 36.2775, -160.968, 47.2807, -190.017, -18.7383, -190.457, -28.4211 )
+
+[node name="Platform3" type="StaticBody2D" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 1037.12, 528.676 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platform3" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform3" index="1"]
+
+visible = false
+build_mode = 0
+polygon = PoolVector2Array( -189.136, -35.9033, -186.056, -43.3854, -175.933, -46.9064, -145.564, -47.7867, 179.25, -47.7867, 188.052, -38.9842, 191.573, -25.3402, 189.372, -12.1364, 159.444, 36.2775, -160.968, 47.2807, -190.017, -18.7383, -190.457, -28.4211 )
+
+[node name="Platform4" type="StaticBody2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 626.482, 446.327 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Platform4" index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform4" index="1"]
+
+visible = false
+build_mode = 0
+polygon = PoolVector2Array( -189.136, -35.9033, -186.056, -43.3854, -175.933, -46.9064, -145.564, -47.7867, 179.25, -47.7867, 188.052, -38.9842, 191.573, -25.3402, 189.372, -12.1364, 159.444, 36.2775, -160.968, 47.2807, -190.017, -18.7383, -190.457, -28.4211 )
+
+
