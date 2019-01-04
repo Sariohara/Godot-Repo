@@ -7,6 +7,11 @@ const GRAVITY = 3600
 const UP = Vector2(0, -1)
 const JUMP_SPEED = -1750
 
+export var world_limit = 3000
+
+func _ready():
+	Global.Player = self
+
 func _physics_process(delta):
 	update_Motion(delta)
 	
@@ -22,12 +27,19 @@ func _process(delta):
 func update_Animation(motion):
 	$AnimatedSprite.update(motion)
 	
+func hurt():
+	motion.y = JUMP_SPEED
+		
+	
 func fall(delta):
-	if is_on_floor():
+	if is_on_floor() or is_on_ceiling():
 		motion.y = 0
 	else:
 		motion.y += GRAVITY * delta
 		jump()
+		
+	if position.y > world_limit:
+		Global.Gamestate.end_game()
 			
 func run():
 		

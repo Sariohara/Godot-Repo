@@ -1,112 +1,447 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Hoppy-Days-Assets/GFX/Environment/ground_grass.png" type="Texture" id=2]
+[ext_resource path="res://Hoppy-Days-Assets/Scripts/Gamestate.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Camera2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/PlatformTiles.tres" type="TileSet" id=5]
+[ext_resource path="res://Scenes/SpikesTop.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/SpikesBottom.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Coin.tscn" type="PackedScene" id=8]
 
-[node name="Level1" type="Node2D"]
+[node name="Level1" type="Node2D" index="0"]
 
-[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+script = ExtResource( 1 )
+startingLives = 3
 
-position = Vector2( 183.715, 321.494 )
+[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="Platform" type="StaticBody2D" parent="." index="1"]
+position = Vector2( 690, 600 )
+world_limit = 3000
+
+[node name="Camera2D" parent="Player" index="2" instance=ExtResource( 3 )]
+
+zoom = Vector2( 2, 1.5 )
+limit_left = 540
+limit_top = -540
+limit_right = 20000
+limit_bottom = 3000
+smoothing_enabled = true
+_sections_unfolded = [ "Limit" ]
+
+[node name="GUI" parent="Player/Camera2D" index="1" instance=ExtResource( 4 )]
+
+[node name="TileMap" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 2
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -65513, 1610612737, 0, -65507, 1610612737, 0, 65556, -1610612735, 0, 65565, -1610612735, 0, 196666, 1, 0, 393283, 5, 0, 393312, 1, 0, 458772, -1610612735, 0, 458781, -1610612731, 0, 458802, 1, 0, 524323, 1610612737, 0, 524368, 1, 0, 524393, 5, 0, 589859, -1610612735, 0, 655420, 5, 0, 655432, 1, 0, 655449, 1, 0, 720905, 1, 0, 721008, 1, 0, 786474, 1, 0, 851997, -1610612735, 0, 917540, 1, 0, 983094, 1610612737, 0, 1048597, 5, 0, 1048636, 1, 0, 1048642, 1, 0, 1048648, 1, 0, 1048654, 1, 0, 1048660, 1, 0, 1048666, 1, 0, 1048672, 1, 0, 1048678, 1, 0, 1048696, 5, 0, 1245206, 1, 0, 1245211, 1, 0, 1310831, 1, 0, 1376271, 1, 0, 1376302, 1, 0, 1376308, 1, 0, 1376315, -1073741823, 0, 1441813, -1073741823, 0, 1441832, 5, 0, 1572965, 1, 0, 1572971, 1, 0, 1638424, 5, 0, 1638433, 5, 0, 1638501, -1610612735, 0, 1835046, 1, 0, 1835052, 1, 0, 1835058, 1, 0, 1835064, 5, 0, 1835067, 1, 0, 1835073, 1, 0, 1835079, 1, 0, 1835085, 1, 0, 1835091, 1, 0, 1835097, 1, 0, 1835103, 1, 0, 2162747, -1073741823, 0 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="Spikes" type="Node2D" parent="." index="2"]
 
 editor/display_folded = true
-position = Vector2( 197.368, 536.48 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="Sprite" type="Sprite" parent="Platform" index="0"]
+[node name="SpikesTop" parent="Spikes" index="0" instance=ExtResource( 6 )]
 
-texture = ExtResource( 2 )
+position = Vector2( 3616.08, 1318.45 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform" index="1"]
+[node name="SpikesTop2" parent="Spikes" index="1" instance=ExtResource( 6 )]
 
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -189.136, -35.9033, -186.056, -43.3854, -175.933, -46.9064, -145.564, -47.7867, 179.25, -47.7867, 188.052, -38.9842, 191.573, -25.3402, 189.372, -12.1364, 159.444, 36.2775, -160.968, 47.2807, -190.017, -18.7383, -190.457, -28.4211 )
+position = Vector2( 3253.51, 1318.1 )
 
-[node name="Platform2" type="StaticBody2D" parent="." index="2"]
+[node name="SpikesTop3" parent="Spikes" index="2" instance=ExtResource( 6 )]
 
-editor/display_folded = true
-position = Vector2( 1436.95, 378.637 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 3543.08, 1766.57 )
 
-[node name="Sprite" type="Sprite" parent="Platform2" index="0"]
+[node name="SpikesTop4" parent="Spikes" index="3" instance=ExtResource( 6 )]
 
-texture = ExtResource( 2 )
+position = Vector2( 3920.7, 1764.05 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform2" index="1"]
+[node name="SpikesTop5" parent="Spikes" index="4" instance=ExtResource( 6 )]
 
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -189.136, -35.9033, -186.056, -43.3854, -175.933, -46.9064, -145.564, -47.7867, 179.25, -47.7867, 188.052, -38.9842, 191.573, -25.3402, 189.372, -12.1364, 159.444, 36.2775, -160.968, 47.2807, -190.017, -18.7383, -190.457, -28.4211 )
+position = Vector2( 4053.34, 1768.21 )
 
-[node name="Platform3" type="StaticBody2D" parent="." index="3"]
+[node name="SpikesTop7" parent="Spikes" index="5" instance=ExtResource( 6 )]
 
-editor/display_folded = true
-position = Vector2( 1037.12, 528.676 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 4831.64, 1761.53 )
 
-[node name="Sprite" type="Sprite" parent="Platform3" index="0"]
+[node name="SpikesTop8" parent="Spikes" index="6" instance=ExtResource( 6 )]
 
-texture = ExtResource( 2 )
+position = Vector2( 5317.66, 1766.54 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform3" index="1"]
+[node name="SpikesTop9" parent="Spikes" index="7" instance=ExtResource( 6 )]
 
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -189.136, -35.9033, -186.056, -43.3854, -175.933, -46.9064, -145.564, -47.7867, 179.25, -47.7867, 188.052, -38.9842, 191.573, -25.3402, 189.372, -12.1364, 159.444, 36.2775, -160.968, 47.2807, -190.017, -18.7383, -190.457, -28.4211 )
+position = Vector2( 5833.75, 1761.53 )
 
-[node name="Platform4" type="StaticBody2D" parent="." index="4"]
+[node name="SpikesTop10" parent="Spikes" index="8" instance=ExtResource( 6 )]
 
-editor/display_folded = true
-position = Vector2( 626.482, 446.327 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
+position = Vector2( 6662.16, 1507.66 )
 
-[node name="Sprite" type="Sprite" parent="Platform4" index="0"]
+[node name="SpikesTop11" parent="Spikes" index="9" instance=ExtResource( 6 )]
 
-texture = ExtResource( 2 )
+position = Vector2( 6840.56, 997.078 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform4" index="1"]
+[node name="SpikesTop6" parent="Spikes" index="10" instance=ExtResource( 6 )]
 
-visible = false
-build_mode = 0
-polygon = PoolVector2Array( -189.136, -35.9033, -186.056, -43.3854, -175.933, -46.9064, -145.564, -47.7867, 179.25, -47.7867, 188.052, -38.9842, 191.573, -25.3402, 189.372, -12.1364, 159.444, 36.2775, -160.968, 47.2807, -190.017, -18.7383, -190.457, -28.4211 )
+position = Vector2( 4326.03, 1764.05 )
+
+[node name="SpikesBottom" parent="Spikes" index="11" instance=ExtResource( 7 )]
+
+position = Vector2( 2106.6, 636.035 )
+
+[node name="SpikesBottom2" parent="Spikes" index="12" instance=ExtResource( 7 )]
+
+position = Vector2( 1811.46, 1334.5 )
+
+[node name="SpikesBottom3" parent="Spikes" index="13" instance=ExtResource( 7 )]
+
+position = Vector2( 2579.09, 1007.2 )
+
+[node name="SpikesBottom4" parent="Spikes" index="14" instance=ExtResource( 7 )]
+
+position = Vector2( 4006.53, 1140.63 )
+
+[node name="SpikesBottom5" parent="Spikes" index="15" instance=ExtResource( 7 )]
+
+position = Vector2( 6821.7, 1137.2 )
+
+[node name="coins" type="Node2D" parent="." index="3"]
+
+[node name="Coin" parent="coins" index="0" instance=ExtResource( 8 )]
+
+position = Vector2( 1499.07, 587.264 )
+frame = 4
+
+[node name="Coin61" parent="coins" index="1" instance=ExtResource( 8 )]
+
+position = Vector2( 1746.34, 593.446 )
+frame = 0
+playing = false
+
+[node name="Coin2" parent="coins" index="2" instance=ExtResource( 8 )]
+
+position = Vector2( 1128.17, 1041.62 )
+frame = 4
+
+[node name="Coin3" parent="coins" index="3" instance=ExtResource( 8 )]
+
+position = Vector2( 1128.17, 859.26 )
+frame = 4
+
+[node name="Coin4" parent="coins" index="4" instance=ExtResource( 8 )]
+
+position = Vector2( 1128.17, 692.353 )
+frame = 4
+
+[node name="Coin8" parent="coins" index="5" instance=ExtResource( 8 )]
+
+position = Vector2( 1712.34, 1514.52 )
+frame = 4
+
+[node name="Coin62" parent="coins" index="6" instance=ExtResource( 8 )]
+
+position = Vector2( 1993.61, 1406.34 )
+frame = 0
+playing = false
+
+[node name="Coin9" parent="coins" index="7" instance=ExtResource( 8 )]
+
+position = Vector2( 1622.7, 485.266 )
+frame = 4
+
+[node name="Coin10" parent="coins" index="8" instance=ExtResource( 8 )]
+
+position = Vector2( 1622.7, 673.808 )
+frame = 4
+
+[node name="Coin11" parent="coins" index="9" instance=ExtResource( 8 )]
+
+position = Vector2( 2083.24, 1060.17 )
+frame = 4
+
+[node name="Coin12" parent="coins" index="10" instance=ExtResource( 8 )]
+
+position = Vector2( 2213.06, 1276.53 )
+frame = 4
+
+[node name="Coin13" parent="coins" index="11" instance=ExtResource( 8 )]
+
+position = Vector2( 2216.15, 1406.34 )
+frame = 4
+
+[node name="Coin14" parent="coins" index="12" instance=ExtResource( 8 )]
+
+position = Vector2( 2209.97, 1533.07 )
+frame = 4
+
+[node name="Coin15" parent="coins" index="13" instance=ExtResource( 8 )]
+
+position = Vector2( 2621.05, 1223.98 )
+frame = 4
+
+[node name="Coin16" parent="coins" index="14" instance=ExtResource( 8 )]
+
+position = Vector2( 2778.69, 1081.8 )
+frame = 4
+
+[node name="Coin17" parent="coins" index="15" instance=ExtResource( 8 )]
+
+position = Vector2( 2917.77, 1223.98 )
+frame = 4
+
+[node name="Coin18" parent="coins" index="16" instance=ExtResource( 8 )]
+
+position = Vector2( 2556.14, 1706.16 )
+frame = 4
+
+[node name="Coin19" parent="coins" index="17" instance=ExtResource( 8 )]
+
+position = Vector2( 2729.23, 1699.97 )
+frame = 4
+
+[node name="Coin20" parent="coins" index="18" instance=ExtResource( 8 )]
+
+position = Vector2( 2877.59, 1437.25 )
+frame = 4
+
+[node name="Coin21" parent="coins" index="19" instance=ExtResource( 8 )]
+
+position = Vector2( 3202.13, 1715.43 )
+frame = 4
+
+[node name="Coin22" parent="coins" index="20" instance=ExtResource( 8 )]
+
+position = Vector2( 3347.4, 1585.61 )
+frame = 4
+
+[node name="Coin23" parent="coins" index="21" instance=ExtResource( 8 )]
+
+position = Vector2( 3566.86, 1570.16 )
+frame = 4
+
+[node name="Coin24" parent="coins" index="22" instance=ExtResource( 8 )]
+
+position = Vector2( 3718.31, 1724.7 )
+frame = 4
+
+[node name="Coin25" parent="coins" index="23" instance=ExtResource( 8 )]
+
+position = Vector2( 4194.3, 1709.25 )
+frame = 4
+
+[node name="Coin26" parent="coins" index="24" instance=ExtResource( 8 )]
+
+position = Vector2( 4191.21, 1570.16 )
+frame = 4
+
+[node name="Coin27" parent="coins" index="25" instance=ExtResource( 8 )]
+
+position = Vector2( 4491.02, 1712.34 )
+frame = 4
+
+[node name="Coin28" parent="coins" index="26" instance=ExtResource( 8 )]
+
+position = Vector2( 4661.02, 1703.07 )
+frame = 4
+
+[node name="Coin29" parent="coins" index="27" instance=ExtResource( 8 )]
+
+position = Vector2( 5007.2, 1712.34 )
+frame = 4
+
+[node name="Coin30" parent="coins" index="28" instance=ExtResource( 8 )]
+
+position = Vector2( 5171.01, 1712.34 )
+frame = 4
+
+[node name="Coin31" parent="coins" index="29" instance=ExtResource( 8 )]
+
+position = Vector2( 5467.74, 1724.7 )
+frame = 4
+
+[node name="Coin32" parent="coins" index="30" instance=ExtResource( 8 )]
+
+position = Vector2( 5600.64, 1730.88 )
+frame = 4
+
+[node name="Coin33" parent="coins" index="31" instance=ExtResource( 8 )]
+
+position = Vector2( 5965.37, 1715.43 )
+frame = 4
+
+[node name="Coin34" parent="coins" index="32" instance=ExtResource( 8 )]
+
+position = Vector2( 6110.64, 1709.25 )
+frame = 4
+
+[node name="Coin35" parent="coins" index="33" instance=ExtResource( 8 )]
+
+position = Vector2( 6255.91, 1715.43 )
+frame = 4
+
+[node name="Coin36" parent="coins" index="34" instance=ExtResource( 8 )]
+
+position = Vector2( 6098.27, 1539.25 )
+frame = 4
+
+[node name="Coin37" parent="coins" index="35" instance=ExtResource( 8 )]
+
+position = Vector2( 6215.73, 1434.16 )
+frame = 4
+
+[node name="Coin38" parent="coins" index="36" instance=ExtResource( 8 )]
+
+position = Vector2( 6373.36, 1378.52 )
+frame = 4
+
+[node name="Coin39" parent="coins" index="37" instance=ExtResource( 8 )]
+
+position = Vector2( 6506.27, 1483.61 )
+frame = 4
+
+[node name="Coin40" parent="coins" index="38" instance=ExtResource( 8 )]
+
+position = Vector2( 6614.45, 1378.52 )
+frame = 4
+
+[node name="Coin41" parent="coins" index="39" instance=ExtResource( 8 )]
+
+position = Vector2( 6784.44, 1344.53 )
+frame = 4
+
+[node name="Coin42" parent="coins" index="40" instance=ExtResource( 8 )]
+
+position = Vector2( 6892.63, 1480.52 )
+frame = 4
+
+[node name="Coin43" parent="coins" index="41" instance=ExtResource( 8 )]
+
+position = Vector2( 7173.89, 1205.44 )
+frame = 4
+
+[node name="Coin44" parent="coins" index="42" instance=ExtResource( 8 )]
+
+position = Vector2( 7792.07, 955.077 )
+frame = 4
+
+[node name="Coin45" parent="coins" index="43" instance=ExtResource( 8 )]
+
+position = Vector2( 7220.26, 621.263 )
+frame = 4
+
+[node name="Coin46" parent="coins" index="44" instance=ExtResource( 8 )]
+
+position = Vector2( 7368.62, 618.172 )
+frame = 4
+
+[node name="Coin47" parent="coins" index="45" instance=ExtResource( 8 )]
+
+position = Vector2( 7504.61, 624.354 )
+frame = 4
+
+[node name="Coin48" parent="coins" index="46" instance=ExtResource( 8 )]
+
+position = Vector2( 6818.44, 438.902 )
+frame = 4
+
+[node name="Coin49" parent="coins" index="47" instance=ExtResource( 8 )]
+
+position = Vector2( 6376.45, 689.262 )
+frame = 4
+
+[node name="Coin50" parent="coins" index="48" instance=ExtResource( 8 )]
+
+position = Vector2( 5776.82, 571.81 )
+frame = 4
+
+[node name="Coin51" parent="coins" index="49" instance=ExtResource( 8 )]
+
+position = Vector2( 5205.01, 441.993 )
+frame = 4
+
+[node name="Coin52" parent="coins" index="50" instance=ExtResource( 8 )]
+
+position = Vector2( 4676.48, 571.81 )
+frame = 4
+
+[node name="Coin53" parent="coins" index="51" instance=ExtResource( 8 )]
+
+position = Vector2( 4373.57, 324.541 )
+frame = 4
+
+[node name="Coin54" parent="coins" index="52" instance=ExtResource( 8 )]
+
+position = Vector2( 3928.49, 565.628 )
+frame = 4
+
+[node name="Coin55" parent="coins" index="53" instance=ExtResource( 8 )]
+
+position = Vector2( 3291.77, 902.532 )
+frame = 4
+
+[node name="Coin56" parent="coins" index="54" instance=ExtResource( 8 )]
+
+position = Vector2( 3446.31, 893.259 )
+frame = 4
+
+[node name="Coin57" parent="coins" index="55" instance=ExtResource( 8 )]
+
+position = Vector2( 3260.86, 380.176 )
+frame = 4
+
+[node name="Coin58" parent="coins" index="56" instance=ExtResource( 8 )]
+
+position = Vector2( 3449.4, 383.267 )
+frame = 4
+
+[node name="Coin59" parent="coins" index="57" instance=ExtResource( 8 )]
+
+position = Vector2( 2757.05, 689.262 )
+frame = 4
+
+[node name="Coin60" parent="coins" index="58" instance=ExtResource( 8 )]
+
+position = Vector2( 2896.14, 692.353 )
+frame = 4
+
+[node name="Coin5" parent="coins" index="59" instance=ExtResource( 8 )]
+
+position = Vector2( 655.263, 281.269 )
+frame = 4
+
+[node name="Coin6" parent="coins" index="60" instance=ExtResource( 8 )]
+
+position = Vector2( 781.988, 194.724 )
+frame = 4
+
+[node name="Coin7" parent="coins" index="61" instance=ExtResource( 8 )]
+
+position = Vector2( 880.896, 287.45 )
+frame = 4
+
+[connection signal="body_entered" from="Spikes/SpikesBottom" to="Spikes/SpikesBottom" method="_on_body_entered"]
+
+[connection signal="body_entered" from="Spikes/SpikesBottom2" to="Spikes/SpikesBottom2" method="_on_body_entered"]
+
+[connection signal="body_entered" from="Spikes/SpikesBottom3" to="Spikes/SpikesBottom3" method="_on_body_entered"]
+
+[connection signal="body_entered" from="Spikes/SpikesBottom4" to="Spikes/SpikesBottom4" method="_on_body_entered"]
+
+[connection signal="body_entered" from="Spikes/SpikesBottom5" to="Spikes/SpikesBottom5" method="_on_body_entered"]
 
 
