@@ -5,7 +5,7 @@
 [ext_resource path="res://Hoppy-Days-Assets/GFX/Background/bg_layer3.png" type="Texture" id=3]
 [ext_resource path="res://Hoppy-Days-Assets/GFX/Background/bg_layer4.png" type="Texture" id=4]
 
-[node name="Camera2D" type="Camera2D"]
+[node name="Camera2D" type="Camera2D" index="0"]
 
 anchor_mode = 1
 rotating = false
@@ -43,7 +43,8 @@ scroll_base_offset = Vector2( 0, 0 )
 scroll_base_scale = Vector2( 1, 1 )
 scroll_limit_begin = Vector2( 0, 0 )
 scroll_limit_end = Vector2( 0, 0 )
-scroll_ignore_camera_zoom = false
+scroll_ignore_camera_zoom = true
+_sections_unfolded = [ "Scroll" ]
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 

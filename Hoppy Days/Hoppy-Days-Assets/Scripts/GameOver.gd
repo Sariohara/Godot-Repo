@@ -4,7 +4,7 @@ func _ready():
 	pass
 	
 func restart_game():
-	get_tree().change_scene("res://Scenes/Level1.tscn")
+	get_tree().change_scene(Global.level1)
 	
 func exit_game():
 	get_tree().quit()

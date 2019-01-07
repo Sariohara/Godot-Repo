@@ -215,8 +215,8 @@ editor_draw_drag_margin = false
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 
-[connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton_pressed"]
-
 [connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]
+
+[connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton_pressed"]
 
 
