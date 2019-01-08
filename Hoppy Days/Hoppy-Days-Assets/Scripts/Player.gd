@@ -41,6 +41,8 @@ func fall(delta):
 		
 	if position.y > world_limit:
 		Global.Gamestate.end_game()
+		
+	motion.y = clamp(motion.y, (JUMP_SPEED * JUMP_BOOST), -JUMP_SPEED)
 			
 func run():
 		

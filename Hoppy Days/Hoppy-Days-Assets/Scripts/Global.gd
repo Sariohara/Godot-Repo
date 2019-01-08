@@ -11,3 +11,4 @@ var pain_sfx
 var level1 = "res://Scenes/Levels/Level1.tscn"
 var gameover = "res://Scenes/Levels/GameOver.tscn"
 var Lightning = "res://Scenes/Lightning.tscn"
+var Victory = "res://Scenes/Levels/Victory.tscn"
