@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Character.gd" type="Script" id=1]
+[ext_resource path="res://Heist-Meisters-Assets/GFX/PNG/Man Red/manRed_stand.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 9.88863
+height = 25.1771
+
+[sub_resource type="OccluderPolygon2D" id=2]
+
+closed = true
+cull_mode = 1
+polygon = PoolVector2Array( -10.4511, -9.53462, -8.83526, -17.2291, -5.28907, -20.3904, 0.321198, -20.23, 5.32262, -16.3058, 6.78458, -8.68823, 6.93846, -1.22456, 6.09207, 6.77772, 5.47651, 15.3956, 3.32205, 20.2431, 0.0134125, 20.7817, -5.52663, 20.32, -8.98915, 17.9348, -10.0664, 12.7794, -10.2972, 6.16216, -10.4511, 1.7763, -10.3742, -3.6868 )
+
+[node name="Character" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+visible = false
+position = Vector2( -1.88413, 0.31402 )
+shape = SubResource( 1 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="2"]
+
+occluder = SubResource( 2 )
+light_mask = 1
+
+
