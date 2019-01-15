@@ -29,7 +29,7 @@ tracks/0/keys = {
 "values": [ -30.0, -30.0, 30.0, 30.0 ]
 }
 
-[node name="securityCamera" type="Node2D" index="0"]
+[node name="securityCamera" type="Node2D"]
 
 __meta__ = {
 "_edit_group_": true
@@ -62,7 +62,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Torch" parent="Cam_Handle/CameraBody" index="1" instance=ExtResource( 4 )]
 
-offset = Vector2( 400, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cam_Handle/CameraBody" index="2"]
 

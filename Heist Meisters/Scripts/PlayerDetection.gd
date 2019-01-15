@@ -1,6 +1,7 @@
 extends "res://Scripts/Character.gd"
 
 const FOV_TOLORENCE = 35
+const MAX_DETECTION_RANGE = 320
 const RED = Color(1, .25, .25)
 const WHITE = Color(1, 1, 1)
 
@@ -31,7 +32,10 @@ func is_player_in_LOS():
 	var space = get_world_2d().direct_space_state
 	var LOS_obstacle = space.intersect_ray(global_position, Player.global_position, [self], collision_mask)
 	
-	if LOS_obstacle.collider == Player:
+	var distance_from_player = Player.global_position.distance_to(global_position)
+	var player_in_range = distance_from_player < MAX_DETECTION_RANGE
+	
+	if LOS_obstacle.collider == Player and player_in_range:
 		return true
 	else:
 		return false
