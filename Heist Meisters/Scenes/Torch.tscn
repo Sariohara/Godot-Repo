@@ -25,5 +25,6 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
+_sections_unfolded = [ "Transform" ]
 
 
